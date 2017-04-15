@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.6)  15 APR 2017 16:54
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.6)  16 APR 2017 07:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -215,13 +215,13 @@ LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 30.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
 (Font)              scaled to size 8.64899pt on input line 30.
-LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 45.
  [1
 
 ]
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 58.
 File: ./figs/observation.eps Graphic file (type eps)
- <./figs/observation.eps>)
+ <./figs/observation.eps> [2])
 (./commentary_on_graph-based_slam.bbl
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 5.
@@ -235,15 +235,15 @@ LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <8> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 5.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 5.
-) [2]
+) [3]
 (./commentary_on_graph-based_slam.aux) ) 
 Here is how much of TeX's memory you used:
- 1680 strings out of 493777
- 19450 string characters out of 6151334
+ 1681 strings out of 493777
+ 19460 string characters out of 6151334
  79920 words of memory out of 5000000
- 5161 multiletter control sequences out of 15000+600000
+ 5162 multiletter control sequences out of 15000+600000
  22624 words of font info for 101 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,14n,26p,247b,338s stack positions out of 30000i,500n,32767p,200000b,80000s
 
-Output written on commentary_on_graph-based_slam.dvi (2 pages, 5848 bytes).
+Output written on commentary_on_graph-based_slam.dvi (3 pages, 8312 bytes).

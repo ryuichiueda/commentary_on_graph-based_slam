@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.6)  15 APR 2017 10:14
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.6)  15 APR 2017 16:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -197,25 +197,32 @@ LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 13.83836pt on input line 1.
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 16.
+(Font)              scaled to size 11.53198pt on input line 15.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 11.53198pt on input line 16.
+(Font)              scaled to size 11.53198pt on input line 15.
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 4.805pt on input line 18.
+(Font)              scaled to size 4.805pt on input line 17.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 9.60999pt on input line 24.
+(Font)              scaled to size 9.60999pt on input line 23.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 6.72699pt on input line 24.
+(Font)              scaled to size 6.72699pt on input line 23.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
-(Font)              scaled to size 4.805pt on input line 24.
+(Font)              scaled to size 4.805pt on input line 23.
 File: ./figs/coordinate.eps Graphic file (type eps)
 
 <./figs/coordinate.eps>
 LaTeX Font Info:    Font shape `JT1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 31.
+(Font)              scaled to size 8.64899pt on input line 30.
 LaTeX Font Info:    Font shape `JY1/mc/m/n' will be
-(Font)              scaled to size 8.64899pt on input line 31.
-) (./commentary_on_graph-based_slam.bbl
+(Font)              scaled to size 8.64899pt on input line 30.
+LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
+(Font)              scaled to size 9.60999pt on input line 45.
+ [1
+
+]
+File: ./figs/observation.eps Graphic file (type eps)
+ <./figs/observation.eps>)
+(./commentary_on_graph-based_slam.bbl
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 5.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
@@ -228,17 +235,15 @@ LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <8> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 5.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 5.
-) [1
-
-] [2]
+) [2]
 (./commentary_on_graph-based_slam.aux) ) 
 Here is how much of TeX's memory you used:
- 1675 strings out of 493777
- 19375 string characters out of 6151334
- 78920 words of memory out of 5000000
- 5158 multiletter control sequences out of 15000+600000
- 22130 words of font info for 99 fonts, out of 8000000 for 9000
+ 1680 strings out of 493777
+ 19450 string characters out of 6151334
+ 79920 words of memory out of 5000000
+ 5161 multiletter control sequences out of 15000+600000
+ 22624 words of font info for 101 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,14n,26p,247b,338s stack positions out of 30000i,500n,32767p,200000b,80000s
 
-Output written on commentary_on_graph-based_slam.dvi (2 pages, 3532 bytes).
+Output written on commentary_on_graph-based_slam.dvi (2 pages, 5848 bytes).

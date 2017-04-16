@@ -113,8 +113,8 @@ $d_{c,t}$には、10[\%]の雑音が混入する\footnote{$「10$[\%]」は変�
 これらの真値をそれぞれ$\varphi_{c,t}^*,\psi_{c,t}^*$とすると、
 $\varphi_{c,t},\psi_{c,t}$は、
 \begin{align}
-	\varphi_{c,t} \sim \mathcal{N}\left(\varphi_{c,t}^*,(3\pi/180)^2\right) \\
-	\psi_{c,t} \sim \mathcal{N}\left(\psi_{c,t}^*,(3\pi/180)^2\right)
+	\varphi_{c,t} \sim \mathcal{N}\left(\varphi_{c,t}^*,(3\pi/180)^2\right) \label{eq:phidist}\\
+	\psi_{c,t} \sim \mathcal{N}\left(\psi_{c,t}^*,(3\pi/180)^2\right) \label{eq:psidist}
 \end{align}
 で生成される。
 
@@ -134,21 +134,19 @@ $\varphi_{c,t},\psi_{c,t}$は、
 問題を解くために、次のノード（頂点）、エッジ（辺、アーク）を持つグラフを考える。
 \begin{itemize}
 	\item ノードの持つデータ: 各時刻のロボットの推定姿勢$\hat{\V{x}}_{0:T}$
-	\item エッジの持つデータ: ランドマーク観測から分かる二つの時刻での相対姿勢と、デッドレコニング情報から分かる二つの時刻での相対姿勢を比較したときの差と、ランドマーク観測の信頼性
+	\item エッジの持つデータ: 次の2つ。
+	\begin{itemize}
+		\item ランドマーク観測から分かる二つの時刻での相対姿勢$\V{\mu}_{c,t,t'}$と、デッドレコニング情報から分かる二つの時刻での相対姿勢$\hat{\V{x}}_t' - \hat{\V{x}}_t$を比較した時の差$\V{e}_{c,t,t'}$。世界座標系のベクトルとして表現される。
+		\item \ref{sub:noise}項で述べた雑音の大きさから予測される$\V{e}_{c,t,t'}$の信頼性。世界座標系の共分散行列$\Sigma_{c,t,t'}$で表現される。
+	\end{itemize}
 \end{itemize}
+ここで、
+\begin{align}
+	\V{e}_{c,t,t'} = \hat{\V{x}}_t' - \hat{\V{x}}_t - \V{\mu}_{c,t,t'}\label{eq:e}
+\end{align}
+とする。
 
-同じランドマーク$L_c$を観測した任意の2つの時刻$t,t'$のペアに対し、
-		ランドマークの計測値から計算した観測地点間の相対姿勢$\V{\mu}_{c,t,t'}$と、デッドレコニング情報からの相対姿勢$\hat{\V{x}}$
-		
-		
-		$\V{\mu}_{c,t,t'}$に混入している雑音の共分散行列$\Sigma_{c,t,t'}$
-		
-$\V{\mu}_{c,t,t'}$、$\Sigma_{c,t,t'}$は世界座標系で定義される。
-
-ノードのデータはデッドレコニングのデータ$\hat{\V{x}}_{0:T}$を初期値とする。一方、
-エッジのデータはランドマークの計測値や、\ref{sub:noise}項で述べた値から計算する必要がある。
-
-\subsubsection{$\V{\mu}_{c,t,t'}$の計算}
+\subsubsection{$\V{\mu}_{c,t,t'}, \V{e}_{c,t,t'}$の計算}
 
 2つの時刻$t,t'$で同じランドマーク$L_c$を観測したときのロボットとランドマークの
 幾何的な関係を図\ref{fig:two_poses}に示す。
@@ -184,20 +182,98 @@ $\psi$を使わない実装もできるが、まだ自分自身では検証し�
 	\end{bmatrix}
 \end{align}
 
+また、式(\ref{eq:e})から、
+\begin{align}
+	\V{e}_{c,t,t'} &= \hat{\V{x}}_t' - \hat{\V{x}}_t -
+	\begin{bmatrix}
+	d_{c,t'} \cos(\hat{\theta}_{t'} + \varphi_{c,t'}) \\
+	d_{c,t'} \sin(\hat{\theta}_{t'} + \varphi_{c,t'}) \\
+	\psi_{c,t'}
+	\end{bmatrix}
+	+ 
+	\begin{bmatrix}
+	d_{c,t} \cos(\hat{\theta}_t + \varphi_{c,t}) \\
+	d_{c,t} \sin(\hat{\theta}_t + \varphi_{c,t}) \\
+	\psi_{c,t}
+	\end{bmatrix} \nonumber \\
+	&= 
+	\begin{bmatrix}
+		\hat{x}_t' - \hat{x}_t 
+		- d_{c,t'} \cos(\hat{\theta}_{t'} + \varphi_{c,t'}) + d_{c,t} \cos(\hat{\theta}_t + \varphi_{c,t}) \\
+		\hat{y}_t' - \hat{y}_t 
+	- d_{c,t'} \sin(\hat{\theta}_{t'} + \varphi_{c,t'}) + d_{c,t} \sin(\hat{\theta}_t + \varphi_{c,t}) \\
+		\hat{\theta}_t' - \hat{\theta}_t 
+	- \psi_{c,t'} + \psi_{c,t}
+	\end{bmatrix} \label{eq:e2}
+\end{align}
+となる。
+
 \subsubsection{$\Sigma_{c,t,t'}$の計算}
 
-二つの観測の誤差に関する共分散行列を世界座標系で足し合わせることで、	$\V{\mu}_{c,t,t'}$の誤差に関する共分散行列$\Sigma_{c,t,t'}$となる。この計算は、二つの観測のベクトルをロボットの移動経路のように扱えば、デッドレコニングの誤差の計算と同じものになる。
+共分散行列$\Sigma_{c,t,t'}$は、$t$、$t'$におけるランドマーク$L_c$
+の計測の誤差に関する共分散行列$\Sigma_{c,t}, \Sigma_{c,t'}$
+をそれぞれの計測座標系で求め、世界座標系に座標変換（回転）して足し合わせたものとなる。
+ここで言う「計測座標系」とは、ロボットからランドマークが計測された向きに引いた線を
+$X$軸とする座標系である。図\ref{fig:observation_noise}に、
+ロボット座標系、計測座標系の関係と、ランドマークの計測値の誤差に関する共分散行列を示す。
+
+\begin{figure}[htbp]
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{./figs/observation_noise.eps}
+		\caption{ランドマークの計測値の不確かさを表す共分散行列}
+		\label{fig:observation_noise}
+	\end{center}
+\end{figure}
 
 
-ランドマーク観測で得られる計測値の不確かさをロボット座標系の共分散行列で表すと、次のようになる。
+時刻$t$での$L_c$の計測に関する雑音を計測値周りのガウス分布で表すと、
+計測座標系におけるこの分布の共分散行列$\Sigma_{c,t}$は、次のようになる。
 \begin{align}
-	\Sigma_{c,t,t'}' =
+	\Sigma_{c,t} =
 	\begin{bmatrix}
-	(d_{c,t'}/10)^2 & 0 & 0 \\
-	0 & [d_{c,t'}/10 \sin(3\pi/180)]^2 & 0 \\
-	0 & 0 & (3\pi/180)^2
+	(d_{c,t}/10)^2 & 0 & 0 \\
+	0 & [(d_{c,t}/10)\sin(3\pi/180)]^2 & 0 \\
+	0 & 0 & (3\pi/180)^2\cdot 2
 	\end{bmatrix}
 \end{align}
-対角成分はそれぞれ、ロボット座標系での$X,Y$軸、$\theta$軸方向の共分散である。
+対角成分はそれぞれ計測座標系での$X,Y$軸、
+$\theta$方向の共分散であり、式(\ref{eq:ddist}-\ref{eq:psidist})
+の分布の分散に由来する。$Y$軸の共分散は、ランドマークの向きの計測誤差に、
+距離の計測値を掛けたものになる
+\footnote{小さい角度なので、$\sin(3\pi/180)$は$3\pi/180$に近似しても良い。}。
+また、$\theta$方向の共分散については、$\phi,\psi$の計測の雑音両方が
+不確かさの原因になるので、分散の値は一方のものの倍になる。
 
+次に、計測座標系で計算した$\Sigma_{c,t}$を世界座標系の誤差楕円に変換する。
+デッドレコニングの値、ランドマークの計測値から、
+計測座標系は世界座標系から$\hat{\theta}_{t'} + \varphi_{c,t'}$だけ
+回転しているとみなすことができるので、$\Sigma_{c,t}$をこの角度だけ回転してやればよい。
+この回転行列は、
+\begin{align}
+	R_{c,t} &=
+	\begin{bmatrix}
+	c & s  & 0 \\
+	-s & c & 0 \\
+	0 & 0 & 1
+	\end{bmatrix}
+\end{align}
+となる。ここで、
+\begin{align}
+	c &= \cos(\hat{\theta}_{t} + \varphi_{c,t}) \nonumber \\
+	s &= \sin(\hat{\theta}_{t} + \varphi_{c,t}) \nonumber 
+\end{align}
+である。この回転行列を$\Sigma_{c,t}, \Sigma_{c,t'}$に対してそれぞれ求めると、
+\begin{align}
+	\Sigma_{c,t,t'} &= R_{c,t}\Sigma_{c,t}R_{c,t}^T + R_{c,t'}\Sigma_{c,t'}R_{c,t'}^T
+\end{align}
+となる。この時点で$\Sigma_{c,t,t'}$の各要素は、
+全て既知の値から計算された実数になっているはずである。
+
+一般に、共分散行列の逆行列は情報行列と呼ばれ、
+graph-based SLAMの計算には
+$\Sigma_{c,t,t'}$に対応する情報行列
+\begin{align}
+	\Omega_{c,t,t'} &= \Sigma_{c,t,t'}^{-1}
+\end{align}
+が用いられる。
 

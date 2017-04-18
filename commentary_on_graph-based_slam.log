@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.6)  18 APR 2017 17:40
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.6)  18 APR 2017 21:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -228,11 +228,14 @@ File: ./figs/two_poses.eps Graphic file (type eps)
 
 <./figs/two_poses.eps> [4]
 File: ./figs/observation_noise.eps Graphic file (type eps)
- <./figs/observation_noise.eps> [5] [6])
+ <./figs/observation_noise.eps> [5] [6]
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 7.68799pt on input line 358.
+LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
+(Font)              scaled to size 5.76599pt on input line 358.
+ [7])
 (./commentary_on_graph-based_slam.bbl
 LaTeX Font Info:    Font shape `JT1/gt/m/n' will be
-(Font)              scaled to size 7.68799pt on input line 5.
-LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 5.
 LaTeX Font Info:    Font shape `JT1/gt/m/it' in size <8> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 5.
@@ -242,15 +245,15 @@ LaTeX Font Info:    Font shape `JY1/gt/m/it' in size <8> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 5.
 LaTeX Font Info:    Font shape `JY1/gt/m/n' will be
 (Font)              scaled to size 7.68799pt on input line 5.
-) [7]
+) [8]
 (./commentary_on_graph-based_slam.aux) ) 
 Here is how much of TeX's memory you used:
- 1699 strings out of 493777
- 19719 string characters out of 6151334
- 83920 words of memory out of 5000000
- 5177 multiletter control sequences out of 15000+600000
- 22792 words of font info for 102 fonts, out of 8000000 for 9000
+ 1716 strings out of 493777
+ 19900 string characters out of 6151334
+ 87920 words of memory out of 5000000
+ 5187 multiletter control sequences out of 15000+600000
+ 25653 words of font info for 112 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  28i,15n,26p,247b,338s stack positions out of 30000i,500n,32767p,200000b,80000s
 
-Output written on commentary_on_graph-based_slam.dvi (7 pages, 24952 bytes).
+Output written on commentary_on_graph-based_slam.dvi (8 pages, 34416 bytes).

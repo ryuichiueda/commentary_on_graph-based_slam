@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.6)  18 APR 2017 21:23
+This is e-pTeX, Version 3.14159265-p3.6-141210-2.6 (utf8.euc) (TeX Live 2015) (preloaded format=platex 2015.10.6)  3 MAY 2017 09:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -256,4 +256,4 @@ Here is how much of TeX's memory you used:
  934 hyphenation exceptions out of 8191
  28i,15n,26p,247b,338s stack positions out of 30000i,500n,32767p,200000b,80000s
 
-Output written on commentary_on_graph-based_slam.dvi (8 pages, 34416 bytes).
+Output written on commentary_on_graph-based_slam.dvi (8 pages, 34456 bytes).
